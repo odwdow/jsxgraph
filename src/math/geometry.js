@@ -2583,6 +2583,7 @@ JXG.extend(
          * @param {String} [method] Intersection method, possible values are 'newton' and 'segment'.
          * If both curves are given by functions (assumed to be continuous), 'newton' is the default, otherwise
          * 'segment' is the default.
+         * @param {Boolean} [testSegment] True if the intersection point should lie on the given segments (or arcs).
          * @returns {JXG.Coords} intersection point
          *
          * @see JXG.Math.Geometry.meetCurveCurveDiscrete
@@ -4572,3 +4573,4 @@ JXG.extend(
 );
 
 export default Mat.Geometry;
+
