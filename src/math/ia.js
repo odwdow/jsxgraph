@@ -842,6 +842,41 @@ JXG.Math.IntervalArithmetic = {
     },
 
     /**
+     * Infer from math.js for jessiecode compatibility
+     * @param  {Number} x radicand. Must be non-negative, if n even.
+     * @param  {Number} n index of the root. must be strictly positive integer.
+     * @return {Number} returns real root or NaN
+     *
+     * @example
+     * nthroot(16, 4): 2
+     * nthroot(-27, 3): -3
+     * nthroot(-4, 2): NaN
+     */
+    nthroot: function (x, n) {
+      var inv = 1 / n;
+
+      if (n <= 0 || Math.floor(n) !== n) {
+        return NaN;
+      }
+
+      if (x === 0.0) {
+        return 0.0;
+      }
+
+      if (x > 0) {
+        return Math.exp(inv * Math.log(x));
+      }
+
+      // From here on, x is negative
+      if (n % 2 === 1) {
+        return -Math.exp(inv * Math.log(-x));
+      }
+
+      // x negative, even root
+      return NaN;
+    },
+
+    /**
      * x<sup>1/n</sup>
      * @param {JXG.Math.Interval|Number} x
      * @param {Number} n
